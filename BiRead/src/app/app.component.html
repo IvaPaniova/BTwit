@@ -1,4 +1,9 @@
-<h1>
-  {{title}}
-</h1>
-<router-outlet></router-outlet>
+<div class="center-block">
+  <h2 id="bible-verse" class="text-center center-block">{{title}}</h2>
+  <h1 id="verse-date" class ="text-center center-block">{{ date }}</h1>
+</div>
+<div class="d-flex justify-content-center mb-3">
+  <button type="button" class="btn btn-outline-primary btn-sm" (click)="onReadYesterdayClick()">-</button>
+  <button id="reading-today" type="button" class="btn btn-primary btn-sm" (click)="onReadingTodayClick()">Reading today</button>
+  <button type="button" class="btn btn-outline-primary btn-sm" (click)="onReadingTommorowClick()">+</button>
+</div>
