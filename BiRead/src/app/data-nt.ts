@@ -1,4 +1,4 @@
-export const verses = [
+export const versesNT = [
 		"Matthew 1",
 		"Matthew 2",
 		"Matthew 3",
