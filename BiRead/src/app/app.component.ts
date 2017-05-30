@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { PlanEntry } from './plan-entry';
 import { versesNT } from './data-nt';
 import {versesOT} from './data-ot';
@@ -28,9 +29,12 @@ export class AppComponent implements OnInit {
   yesterday: Date;
   firstDay: Date;
   day: number;
+  activeBtn: string;
+  radioGroupFrom: FormGroup;
 
-  constructor() {
+  constructor(private fb: FormBuilder) {
     console.log('constructor is called on app.component.ts');
+    this.activeBtn = 'nt';
   }
 
   populateMap() {
@@ -49,6 +53,10 @@ export class AppComponent implements OnInit {
     console.log('ngOnInit is called on app.component.ts');
     this.populateMap();
     this.onReadingTodayClick();
+  }
+
+  setActiveBtn(value) {
+    this.activeBtn = value;
   }
 
   onReadingTodayClick(){
