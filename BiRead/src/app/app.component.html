@@ -1,21 +1,48 @@
 <form [formGroup]="radioGroupFrom" novalidate>
   <div class="btn-group center-block text-center">
-    <label class="btn btn-primary" [class.active]="activeBtn === 'nt'" >
-      <input type="radio" (click)="setActiveBtn('nt')"> New Testament
-    </label>
-    <label class="btn btn-primary" [class.active]="activeBtn === 'ot'">
-      <input type="radio" (click)="setActiveBtn('ot')"> Old Testament
-    </label>
+    <template [ngIf]="language === 'eng'">
+      <label class="btn btn-primary" [class.active]="activeBtn === 'ot'">
+        <input type="radio" (click)="setActiveBtn('ot')"> Old Testament
+      </label>
+      <label class="btn btn-primary" [class.active]="activeBtn === 'nt'" >
+        <input type="radio" (click)="setActiveBtn('nt')"> New Testament
+      </label>
+    </template>
+    <template [ngIf]="language === 'rus'">
+      <label class="btn btn-primary" [class.active]="activeBtn === 'ot'">
+        <input type="radio" (click)="setActiveBtn('ot')"> Старый Завет
+      </label>
+      <label class="btn btn-primary" [class.active]="activeBtn === 'nt'" >
+        <input type="radio" (click)="setActiveBtn('nt')"> Новый Завет
+      </label>
+    </template>
   </div>
 </form>
 
 <div class="center-block">
   <h2 id="verse-date" class="text-center center-block">{{ date }}</h2>
-  <h1 id="bible-verse" *ngIf="activeBtn === 'ot'" class="text-center center-block">{{ titleOT }}</h1>
-  <h1 id="bible-verse" *ngIf="activeBtn === 'nt'" class="text-center center-block">{{ titleNT }}</h1>
+  <template [ngIf]="language === 'eng'"> 
+    <h1 id="bible-verse" *ngIf="activeBtn === 'ot'" class="text-center center-block">{{ titleOT }}</h1>
+    <h1 id="bible-verse" *ngIf="activeBtn === 'nt'" class="text-center center-block">{{ titleNT }}</h1>
+  </template>
+  <template [ngIf]="language === 'rus'">
+    <h1 id="bible-verse" *ngIf="activeBtn === 'ot'" class="text-center center-block">{{ titleOTrus }}</h1>
+    <h1 id="bible-verse" *ngIf="activeBtn === 'nt'" class="text-center center-block">{{ titleNTrus }}</h1>
+  </template>
 </div>
 <div class="d-flex justify-content-center mb-3">
   <button type="button" class="btn btn-outline-primary btn-sm" (click)="onReadYesterdayClick()">-</button>
   <button id="reading-today" type="button" class="btn btn-primary btn-sm" (click)="onReadingTodayClick()">Reading today</button>
   <button type="button" class="btn btn-outline-primary btn-sm" (click)="onReadingTommorowClick()">+</button>
 </div>
+
+<form [formGroup]="radioGroupFrom" novalidate>
+  <div class="btn-group center-block text-center">
+    <label class="btn btn-primary" [class.active]="language === 'rus'" >
+      <input type="radio" (click)="setLanguage('rus')"> Rus
+    </label>
+    <label class="btn btn-primary" [class.active]="language === 'eng'">
+      <input type="radio" (click)="setLanguage('eng')"> Eng
+    </label>
+  </div>
+</form>
