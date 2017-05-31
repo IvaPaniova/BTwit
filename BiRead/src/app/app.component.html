@@ -10,7 +10,7 @@
     </template>
     <template [ngIf]="language === 'rus'">
       <label class="btn btn-primary" [class.active]="activeBtn === 'ot'">
-        <input type="radio" (click)="setActiveBtn('ot')"> Старый Завет
+        <input type="radio" (click)="setActiveBtn('ot')"> Ветхий Завет
       </label>
       <label class="btn btn-primary" [class.active]="activeBtn === 'nt'" >
         <input type="radio" (click)="setActiveBtn('nt')"> Новый Завет
@@ -32,7 +32,8 @@
 </div>
 <div class="d-flex justify-content-center mb-3">
   <button type="button" class="btn btn-outline-primary btn-sm" (click)="onReadYesterdayClick()">-</button>
-  <button id="reading-today" type="button" class="btn btn-primary btn-sm" (click)="onReadingTodayClick()">Reading today</button>
+  <button id="reading-today" type="button" class="btn btn-primary btn-sm" (click)="onReadingTodayClick()" *ngIf="language === 'eng'">Reading today</button>
+  <button id="reading-today" type="button" class="btn btn-primary btn-sm" (click)="onReadingTodayClick()" *ngIf="language === 'rus'">Читаем сегодня</button>
   <button type="button" class="btn btn-outline-primary btn-sm" (click)="onReadingTommorowClick()">+</button>
 </div>
 
