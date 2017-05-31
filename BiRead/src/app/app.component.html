@@ -38,11 +38,11 @@
 
 <form [formGroup]="radioGroupFrom" novalidate>
   <div class="btn-group center-block text-center">
-    <label class="btn btn-primary" [class.active]="language === 'rus'" >
-      <input type="radio" (click)="setLanguage('rus')"> Rus
-    </label>
     <label class="btn btn-primary" [class.active]="language === 'eng'">
       <input type="radio" (click)="setLanguage('eng')"> Eng
+    </label>
+     <label class="btn btn-primary" [class.active]="language === 'rus'" >
+      <input type="radio" (click)="setLanguage('rus')"> Rus
     </label>
   </div>
 </form>
